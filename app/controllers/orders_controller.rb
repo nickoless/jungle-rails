@@ -10,7 +10,12 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
-      redirect_to order, notice: 'Your Order has been placed.'
+
+      respond_to do |format|
+        UserMailer.confirmation_email(order.email).deliver_now
+        format.html { redirect_to order, notice: 'Your Order has been placed.'}
+        format.json { render json: @order, status: :created, location: @order }
+      end
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
@@ -36,6 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order(stripe_charge)
+
     order = Order.new(
       email: params[:stripeEmail],
       total_cents: cart_total,
