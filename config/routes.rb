@@ -10,6 +10,16 @@ Rails.application.routes.draw do
     delete :remove_item
   end
 
+  # get and post used to assign different paths to one controller
+  # not possible using 'resources'
+  
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   resources :orders, only: [:create, :show]
 
   namespace :admin do
