@@ -1,0 +1,29 @@
+
+  <% order_summary = @order.line_items.each do |item| %>
+    <% product = Product.find_by(id: item.product_id)%>
+    <% product.name %>
+      <tr>
+        <td>
+          <%= image_tag product.image.tiny %>
+        </td>
+        <td>
+          <h4><%= product.name %></h4>
+          <p><%= product.description %></p>
+        </td>
+        <td>
+          <%= product.price %>
+        </td>
+        <td>
+          <%= item.quantity %>
+        </td>
+        <td>
+        <%= product.price * item.quantity %>
+        </td>
+      </tr>
+    <% end %>
+    
+  
+
+
+  
+  
