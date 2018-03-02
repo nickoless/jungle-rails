@@ -7,6 +7,12 @@
   </header>
   <p class="description">
     <%= product.description %>
+
+  </p>
+  
+  <p class="rating">
+     RATING: <%= product.reviews.average('rating') %>
+            
   </p>
   <footer class="actions">
     <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>

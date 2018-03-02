@@ -28,7 +28,7 @@
 
     <div class="row">
     <ul>
-    <% @product_review.each do |review|  %>
+    <% @product.reviews.each do |review|  %>
      <li> <%= review.description %> - Rating: <%= review.rating %></li>
       <% end %>
       </ul>

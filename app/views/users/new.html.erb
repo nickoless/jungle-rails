@@ -1,15 +1,3 @@
-<h1>Signup!</h1>
-
-<%= form_for :user, :html => {:class => 'test'}, url: '/users' do |f| %>
-
-  First Name: <%= f.text_field :first_name %>
-  Last Name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  <%= f.submit "Submit" %>
-
-<% end %>
-
 <section class="login">
   <div class="wrapper">
     <%= form_for :user, :html => {:class => 'form-login'}, url: '/users' do |f|  %>       
