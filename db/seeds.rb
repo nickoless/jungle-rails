@@ -161,7 +161,21 @@ Review.create({
   product_id: 1,
   user_id: 2,
   description: 'Ayy lmao',
+  rating: 3,
+})
+
+Review.create({
+  product_id: 3,
+  user_id: 1,
+  description: 'This is the greatest hat of all time. OF ALL TIME',
   rating: 5,
+})
+
+Review.create({
+  product_id: 3,
+  user_id: 2,
+  description: 'dank',
+  rating: 3,
 })
 
 puts "DONE!"

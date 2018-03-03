@@ -22,17 +22,32 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Reviews</dt>
+          <% @product.reviews.reverse.each do |review|  %>
+          <dd><%= review.rating %></dd>
+          <dd><%= review.user_id %></dd>
+          <dd><%= review.description %></dd>
+          <dd>\n</dd>
+          <% end %>
         </dl>
       </div>
     </div>
 
-    <div class="row">
+       <div class="row">
     <ul>
-    <% @product.reviews.each do |review|  %>
-     <li><%= review.user %><%= review.description %> - Rating: <%= review.rating %></li>
-      <% end %>
-      </ul>
+    <li><%= session[:user_id] %></li>
+    
+
+    
     </div>
+    <% @review_currentuser.each do |review|  %>
+      <%= link_to "Delete", product_review_path(:product_id => @product.id, :id => review.id) , method: :delete, data: {confirm: "Are you sure you want to remove your review?"} %>
+
+    <%= review.description %>
+    <% end %>
+    <% if session[:user_id] %>
+
+    
 
     <div class="row">
       <%= form_for ([@product, @review]) do |f| %>
@@ -40,6 +55,7 @@
         <%= f.text_area :description %>
         <%= f.submit 'Add Review!' %>
       <% end %>
+    <% end %>
     </div>
   </article>
 </section>
