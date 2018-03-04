@@ -22,7 +22,8 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
-          <dt>Reviews</dt>
+
+          <dt>User Reviews</dt>
           <div class="container">
           <% @review.reverse.each do |review|  %>
             <% arr = Array.new(5) %>
@@ -35,7 +36,6 @@
           <dd><%= review.user.first_name %> <%= review.user.last_name %></dd>
           <dd><%= review.description %></dd>
             
-          
           <% end %>
           </div>
         </dl>

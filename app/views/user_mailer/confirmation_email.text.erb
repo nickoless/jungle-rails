@@ -1,9 +1,14 @@
-Welcome to example.com,
+Confirmation of Order <%= @order.id %>
 ===============================================
- 
-You have successfully signed up to example.com,
-your username is: .
- 
-To login to the site, just follow this link: 
- 
-Thanks for joining and have a great day!
+
+You have successfully placed an order!
+
+<% @order.line_items.each do |item| %>
+<% product = Product.find_by(id: item.product_id)%>
+<%= product.name %> - <%= product.price %>
+<% end %>
+
+TOTAL: <%= @order.total %>
+
+Thanks for ordering and have a great day!
+

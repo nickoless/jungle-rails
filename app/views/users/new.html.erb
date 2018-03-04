@@ -1,6 +1,7 @@
+
 <section class="login">
   <div class="wrapper">
-    <%= form_for :user, :html => {:class => 'form-login'}, url: '/users' do |f|  %>       
+    <%= form_for :user, :html => {:class => 'form-login'}, url: '/users' do |f|  %> 
       <h2 class="form-login-heading">Sign Up!</h2>
       <%= f.text_field :first_name, placeholder: 'First Name', class: 'form-control' %>
       <%= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>

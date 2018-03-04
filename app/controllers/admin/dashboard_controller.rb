@@ -2,7 +2,9 @@ class Admin::DashboardController < ApplicationController
 
 # this should be cleaned up using a module
 
-  http_basic_authenticate_with name: "Jungle", password: "book"
+  http_basic_authenticate_with
+   name: ENV['ADMIN_NAME'], 
+   password: ENV['ADMIN_PASSWORD']
 
   def show
   end
