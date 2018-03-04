@@ -79,6 +79,23 @@ main section.categories-show {
 
 main section.products-show {
 
+  .container {
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .review-button {
+    margin-top: 10px;
+    float: right;
+  }
+
+  .remove-review {
+    float: right;
+  }
+
   .product-detail {
     img.main-img {
       max-width: 100%;

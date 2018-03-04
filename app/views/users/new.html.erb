@@ -1,15 +1,14 @@
 
 <section class="login">
-  <div class="wrapper">
-    <%= form_for :user, :html => {:class => 'form-login'}, url: '/users' do |f|  %> 
-      <h2 class="form-login-heading">Sign Up!</h2>
-      <%= f.text_field :first_name, placeholder: 'First Name', class: 'form-control' %>
-      <%= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>
-      <%= f.email_field :email, placeholder: 'Email Address', class: 'form-control' %>
-      <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
-      <%= f.submit 'Submit', class: 'btn btn-lg btn-primary btn-block' %>  
-    <% end %>
-  </div>
+<div class="wrapper">
+  <%= form_for :user, :html => {:class => 'form-login'}, url: '/users' do |f|  %> 
+    <h2 class="form-login-heading">Sign Up!</h2>
+    <%= f.text_field :first_name, placeholder: 'First Name', class: 'form-control' %>
+    <%= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>
+    <%= f.email_field :email, placeholder: 'Email Address', class: 'form-control' %>
+    <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+    <%= f.submit 'Submit', class: 'btn btn-lg btn-primary btn-block' %>  
+  <% end %>
+</div>
 </section>
-
 

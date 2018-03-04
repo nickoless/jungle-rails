@@ -22,10 +22,10 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+        </dl>
 
-          <dt>User Reviews</dt>
+        <% @review.reverse.each do |review|  %>
           <div class="container">
-          <% @review.reverse.each do |review|  %>
             <% arr = Array.new(5) %>
             <% count = review.rating %>
             <% for i in 0..4 %>
@@ -33,38 +33,50 @@
             <% count -= 1  %>
             <% end %>
             <dd><%= fa_icon arr[0] %> <%= fa_icon arr[1] %> <%= fa_icon arr[2] %> <%= fa_icon arr[3] %> <%= fa_icon arr[4] %></dd>
-          <dd><%= review.user.first_name %> <%= review.user.last_name %></dd>
+            <dd>Reviewed by: <%= review.user.first_name %> <%= review.user.last_name %></dd>
+            <dd><%= review.description %></dd>
+          </div>  
+          <% end %>
+
+        <% @review_currentuser.each do |review|  %>
+          
+          <div class="container">
+          <h5 class'dl-horizontal'> Your Review </h5>
           <dd><%= review.description %></dd>
-            
+          <%= link_to 'Remove', product_review_path(:product_id => @product.id, :id => review.id), class: "btn-sm btn-danger remove-review", method: :delete, data: {confirm: "Are you sure you want to remove your review?"} %></dd>
           <% end %>
           </div>
-        </dl>
+          
+        <% if session[:user_id] %>
+              
+          <!-- Button trigger modal -->
+          <dd><button type="button" class="btn btn-primary review-button" data-toggle="modal" data-target="#exampleModalCenter">Add Review</button></dd>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLongTitle">Please select a rating and enter a description</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= form_for ([@product, @review_new]) do |f| %>
+                    <dd><%= f.select :rating, [ 1, 2, 3, 4, 5] %></dd>
+                    <dd><%= f.text_area :description, class: 'form-control' %></dd>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <%= f.submit 'Submit Review!', class: "btn btn-primary" %>
+                </div>
+                <% end %>
+                <% end %>
+            
+         </div>
       </div>
-    </div>
-
-       <div class="row">
-    <ul>
-    <li><%= session[:user_id] %></li>
-    
-
-    
-    </div>
-    <% @review_currentuser.each do |review|  %>
-      <%= link_to "Delete", product_review_path(:product_id => @product.id, :id => review.id) , method: :delete, data: {confirm: "Are you sure you want to remove your review?"} %>
-
-    <%= review.description %>
-    <% end %>
-    <% if session[:user_id] %>
-
-    
-
-    <div class="row">
-      <%= form_for ([@product, @review_new]) do |f| %>
-        <%= f.select :rating, [ 1, 2, 3, 4, 5] %>
-        <%= f.text_area :description %>
-        <%= f.submit 'Add Review!' %>
-      <% end %>
-    <% end %>
-    </div>
+  </div>
+  </div>
   </article>
 </section>
