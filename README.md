@@ -7,11 +7,11 @@ A mini e-commerce application built with Rails 4.2
 
 ## Screenshots
 
-!["Main Page"]()
+!["Main Page"](https://github.com/nickoless/jungle-rails/blob/master/public/docs/index-page.png)
 
-!["Product Page"]()
+!["Product Page"](https://github.com/nickoless/jungle-rails/blob/master/public/docs/product-page.png)
 
-!["Order Confirmation"]()
+!["Order Confirmation"](https://github.com/nickoless/jungle-rails/blob/master/public/docs/order-confirmation-page.png)
 
 ## Getting Started
 
