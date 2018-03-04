@@ -23,12 +23,21 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
           <dt>Reviews</dt>
-          <% @product.reviews.reverse.each do |review|  %>
-          <dd><%= review.rating %></dd>
-          <dd><%= review.user_id %></dd>
+          <div class="container">
+          <% @review.reverse.each do |review|  %>
+            <% arr = Array.new(5) %>
+            <% count = review.rating %>
+            <% for i in 0..4 %>
+            <% count - 1 >= 0 ? arr[i] = 'star' : arr[i] = 'star-o' %>
+            <% count -= 1  %>
+            <% end %>
+            <dd><%= fa_icon arr[0] %> <%= fa_icon arr[1] %> <%= fa_icon arr[2] %> <%= fa_icon arr[3] %> <%= fa_icon arr[4] %></dd>
+          <dd><%= review.user.first_name %> <%= review.user.last_name %></dd>
           <dd><%= review.description %></dd>
-          <dd>\n</dd>
+            
+          
           <% end %>
+          </div>
         </dl>
       </div>
     </div>
@@ -50,7 +59,7 @@
     
 
     <div class="row">
-      <%= form_for ([@product, @review]) do |f| %>
+      <%= form_for ([@product, @review_new]) do |f| %>
         <%= f.select :rating, [ 1, 2, 3, 4, 5] %>
         <%= f.text_area :description %>
         <%= f.submit 'Add Review!' %>
