@@ -4,9 +4,6 @@ A mini e-commerce application built with Rails 4.2
 
 ## Screenshots
 
-
-## Screenshots
-
 !["Main Page"](https://github.com/nickoless/jungle-rails/blob/master/public/docs/index-page.png)
 
 !["Product Page"](https://github.com/nickoless/jungle-rails/blob/master/public/docs/product-page.png)
