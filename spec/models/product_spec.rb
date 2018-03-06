@@ -19,22 +19,22 @@ RSpec.describe Product, type: :model do
       expect(@product.valid?).to eq true
     end
 
-    it 'of name' do
+    it 'should have a name' do
       @product.name = nil;
       expect(@product.valid?).to eq false
     end
 
-    it 'of price' do
+    it 'should have a price' do
       @product.price_cents = nil;
       expect(@product.valid?).to eq false
     end
     
-    it 'of quantity' do
+    it 'should have a quantity' do
       @product.quantity = nil;
       expect(@product.valid?).to eq false
     end
 
-    it 'of category' do
+    it 'should have a category' do
       @product.category = nil;
       expect(@product.valid?).to eq false
     end
